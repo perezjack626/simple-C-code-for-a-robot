@@ -1,0 +1,49 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Robot {
+private:
+    string name;
+    int batteryLevel;
+public:
+    // Constructor
+    Robot(string n) {
+        name = n;
+        batteryLevel = 100;
+    }
+
+    // Function to display battery level
+    void displayBatteryLevel() {
+        cout << "Battery level of " << name << " is: " << batteryLevel << "%" << endl;
+    }
+
+    // Function to perform a task
+    void performTask(string task) {
+        if (batteryLevel > 0) {
+            cout << name << " is performing task: " << task << endl;
+            batteryLevel -= 10; // Assuming each task consumes 10% battery
+        } else {
+            cout << "Cannot perform task. Battery level is too low." << endl;
+        }
+    }
+};
+
+int main() {
+    // Create a robot object
+    Robot myRobot("Robbie");
+
+    // Display battery level
+    myRobot.displayBatteryLevel();
+
+    // Perform tasks
+    myRobot.performTask("Cleaning");
+    myRobot.performTask("Cooking");
+    myRobot.performTask("Walking");
+
+    // Display battery level after tasks
+    myRobot.displayBatteryLevel();
+
+    return 0;
+}
